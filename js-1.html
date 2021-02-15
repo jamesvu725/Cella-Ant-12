@@ -1,0 +1,46 @@
+<!-- James Vu
+james.vu725@csu.fullerton.edu
+Sets up html page to view cella ant #12.
+Calls the functions for cella ant #12
+Ant turns, change cell color, move forward -->
+<!doctype html><html><head>
+<title>Project 1 Cella Ant #12</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body><h1>Project 1 Cella Ant #12</h1>
+<h4>CS 335-05 Team: JVU</h4>
+<canvas id="grid" width="500" height="500"></canvas>
+<div class="row">
+  <div class="column" style="background-color: 'black'">
+  </div>
+</div>
+</body>
+
+<script src="draw-stuff.js"></script>
+<script src="ant.js"></script>
+<script>
+  const canvas = document.getElementById( "grid" );
+  const context = canvas.getContext( "2d" );
+  // draw grid and rectangle board
+  draw_rect( context );
+  draw_grid( context, 10, 50, 'white', 'yellow');
+  // initialize array with cell's state
+  const arr = [];
+  const row = 41, col = 41, val = 0;
+  for (let i = 0; i < row; ++i) {
+    arr[i] = [];
+    for (let j = 0; j < col; ++j) {
+      arr[i][j] = val;
+    }
+  }
+  //initialize ant at center facing left
+  const ant = [20, 20, 3];
+  draw_ant(context, ant);
+
+  const delay = 250; // delay in milliseconds
+  const moves = 1000; // how many times ant moves
+  // start ant's behavior, turn ant, change cell state, move forward
+  if (moves > 0 ) { update(context, arr, ant, 0, moves, delay); }
+</script>
+</html>
